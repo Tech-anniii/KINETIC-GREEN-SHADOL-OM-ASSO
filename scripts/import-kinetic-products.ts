@@ -2,7 +2,7 @@ import { writeFile, readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
-const BASE_URL = "https://www.kineticgreen.com";
+const BASE_URL = "https://www.kineticgreen.in";
 const LIST_API = `${BASE_URL}/api/admin/list_products.php`;
 const DETAIL_API = `${BASE_URL}/api/admin/manage_product.php?action=fetch&id=`;
 const SNAPSHOT = path.join(process.cwd(), "scripts", "official-products.snapshot.json");
