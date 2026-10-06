@@ -6,6 +6,7 @@ import { StickyMobileCTA } from "@/components/public/StickyMobileCTA";
 import { getStoreSettings } from "@/lib/data/queries";
 import { GOOGLE_MAPS_URL, LOCAL_SERVICE_AREAS, SEO_DESCRIPTION, SEO_KEYWORDS, SITE_NAME, SITE_URL } from "@/lib/constants";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -161,6 +162,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <main className="pb-24 md:pb-20">{children}</main>
         <Footer settings={settings} />
         <StickyMobileCTA settings={settings} />
+        <Analytics />
       </body>
     </html>
   );
