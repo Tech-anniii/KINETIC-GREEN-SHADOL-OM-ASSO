@@ -19,7 +19,7 @@ export const MAP_EMBED_URL =
 export const SITE_NAME = "Kinetic Green Shahdol";
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://kineticgreenshahdol.in";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.kineticgreenshahdol.in";
 
 export const SEO_DESCRIPTION =
   "Kinetic Green Shahdol by Om Associates offers non-registration electric two-wheelers, no-licence EV guidance, test rides, battery warranty support, finance options, and WhatsApp enquiries in Shahdol, Madhya Pradesh.";
