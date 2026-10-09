@@ -37,7 +37,9 @@ export function Header({ settings }: { settings: StoreSettings }) {
           <ButtonLink href={settings.whatsappUrl || `/`}>WhatsApp</ButtonLink>
         </nav>
         <button
-          aria-label="Open menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
           className="rounded-xl border border-white/15 p-2 lg:hidden"
           onClick={() => setOpen((value) => !value)}
         >
@@ -45,7 +47,7 @@ export function Header({ settings }: { settings: StoreSettings }) {
         </button>
       </div>
       {open ? (
-        <div className="border-t border-white/10 bg-[#0b100c] px-4 pb-4 lg:hidden">
+        <div id="mobile-navigation" className="border-t border-white/10 bg-[#0b100c] px-4 pb-4 lg:hidden">
           <div className="grid gap-1 py-3">
             {nav.map(([label, href]) => (
               <Link

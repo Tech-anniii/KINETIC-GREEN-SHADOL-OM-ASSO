@@ -8,6 +8,7 @@ import { officialAssetSrc } from "@/lib/utils";
 const AUTO_FRAMES_PER_SECOND = 0.7;
 const DRAG_PIXELS_PER_FRAME = 26;
 const MIN_INTERACTIVE_FRAMES = 2;
+const INITIAL_PRELOAD_FRAMES = 8;
 const RESUME_DELAY_MS = 2400;
 
 export function Viewer360({
@@ -59,14 +60,15 @@ export function Viewer360({
 
     let cancelled = false;
     let completed = 0;
+    const initialFrames = frames.slice(0, INITIAL_PRELOAD_FRAMES);
 
-    frames.forEach((frame) => {
+    initialFrames.forEach((frame) => {
       const image = new window.Image();
       image.onload = image.onerror = () => {
         if (cancelled) return;
         completed += 1;
         setLoadedCount(completed);
-        if (completed === frames.length) setIsReady(true);
+        if (completed === initialFrames.length) setIsReady(true);
       };
       image.src = officialAssetSrc(frame);
     });
@@ -198,7 +200,8 @@ export function Viewer360({
     );
   }
 
-  const progress = Math.round((loadedCount / frames.length) * 100);
+  const initialFrameCount = Math.min(frames.length, INITIAL_PRELOAD_FRAMES);
+  const progress = Math.round((loadedCount / initialFrameCount) * 100);
 
   return (
     <div

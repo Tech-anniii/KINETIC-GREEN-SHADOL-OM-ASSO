@@ -19,7 +19,7 @@ import { getEligibleProducts, getFaqs, getGallery, getProducts, getStoreSettings
 import { emailHref, whatsappHref, whatsappMessage } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Kinetic Green Shahdol | No-Licence EV Showroom",
+  title: "No-Licence EV Showroom in Shahdol",
   description:
     "Visit Kinetic Green Shahdol by Om Associates for non-registration electric two-wheelers, student-friendly EVs, test rides, price details, finance and battery warranty support.",
   alternates: {

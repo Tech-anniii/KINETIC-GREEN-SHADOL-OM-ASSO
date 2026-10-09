@@ -10,12 +10,10 @@ function absoluteUrl(url: string) {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
   const products = await getProducts();
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: SITE_URL,
-      lastModified: now,
       changeFrequency: "weekly",
       priority: 1,
       images: [
@@ -27,43 +25,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${SITE_URL}/vehicles`,
-      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.95,
     },
     {
       url: `${SITE_URL}/no-licence-ev`,
-      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.95,
     },
     {
       url: `${SITE_URL}/book-enquiry`,
-      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/contact`,
-      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/about`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/faq`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.75,
     },
     {
       url: `${SITE_URL}/policies`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.55,
     },
@@ -71,7 +62,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const productRoutes: MetadataRoute.Sitemap = products.map((product) => ({
     url: `${SITE_URL}/vehicles/${product.slug}`,
-    lastModified: now,
     changeFrequency: "weekly",
     priority: 0.9,
     images: [

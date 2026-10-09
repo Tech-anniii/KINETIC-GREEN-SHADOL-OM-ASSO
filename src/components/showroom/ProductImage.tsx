@@ -1,4 +1,5 @@
 import type { Product } from "@/lib/types";
+import Image from "next/image";
 import { officialAssetSrc } from "@/lib/utils";
 
 export function ProductImage({
@@ -12,12 +13,13 @@ export function ProductImage({
 }) {
   if (product.heroImageUrl) {
     return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
+      <Image
         src={officialAssetSrc(product.heroImageUrl)}
         alt={product.name}
-        loading={priority ? "eager" : "lazy"}
-        className={`h-full w-full object-contain ${className}`}
+        fill
+        priority={priority}
+        sizes="(max-width: 640px) 82vw, (max-width: 1024px) 50vw, 33vw"
+        className={`object-contain ${className}`}
       />
     );
   }

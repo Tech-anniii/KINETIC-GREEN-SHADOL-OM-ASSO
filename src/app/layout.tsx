@@ -4,12 +4,22 @@ import { Footer } from "@/components/public/Footer";
 import { Header } from "@/components/public/Header";
 import { StickyMobileCTA } from "@/components/public/StickyMobileCTA";
 import { getStoreSettings } from "@/lib/data/queries";
-import { GOOGLE_MAPS_URL, LOCAL_SERVICE_AREAS, SEO_DESCRIPTION, SEO_KEYWORDS, SITE_NAME, SITE_URL } from "@/lib/constants";
+import {
+  GOOGLE_MAPS_URL,
+  LOCAL_SERVICE_AREAS,
+  SEO_DESCRIPTION,
+  SEO_KEYWORDS,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/constants";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -62,11 +72,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  verification: {
-    other: {
-      "msvalidate.01": "",
-    },
-  },
   other: {
     "geo.region": "IN-MP",
     "geo.placename": "Shahdol",
@@ -80,11 +85,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const settings = await getStoreSettings();
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
-    "@type": ["AutoDealer", "LocalBusiness", "ElectricVehicleChargingStation"],
+    "@type": ["AutoDealer", "LocalBusiness"],
     name: "Kinetic Green Shahdol",
     alternateName: ["Om Associates", "Kinetic Green Om Associates Shahdol"],
     description: SEO_DESCRIPTION,
@@ -109,7 +118,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       longitude: 81.3683177,
     },
     hasMap: GOOGLE_MAPS_URL,
-    openingHours: "Mo-Su 10:00-20:00",
     priceRange: "Contact showroom",
     areaServed: LOCAL_SERVICE_AREAS,
     sameAs: [settings.instagramUrl, GOOGLE_MAPS_URL].filter(Boolean),
@@ -117,11 +125,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       {
         "@type": "Offer",
         itemOffered: {
-          "@type": "Product",
-          name: "Non-registration electric two-wheelers",
-          category: "Electric two-wheeler",
+          "@type": "Service",
+          name: "Non-registration electric two-wheeler sales and enquiry",
+          serviceType: "Electric two-wheeler dealership",
         },
-        availability: "https://schema.org/InStock",
         areaServed: "Shahdol",
       },
       {
@@ -152,7 +159,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd),
+          }}
         />
         <script
           type="application/ld+json"

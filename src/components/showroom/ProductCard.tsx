@@ -33,7 +33,7 @@ export function ProductCard({
   return (
     <article className="min-w-[82vw] overflow-hidden rounded-[18px] border border-[#e7e9ee] bg-white shadow-[0_22px_70px_rgba(12,18,13,0.08)] sm:min-w-0">
       <Link href={`/vehicles/${product.slug}`} className="block bg-[#f7f8fa] px-5 py-6">
-        <div className="aspect-[16/7] sm:aspect-[16/6]">
+        <div className="relative aspect-[16/7] sm:aspect-[16/6]">
           <ProductImage product={product} priority={priority} />
         </div>
       </Link>
@@ -62,7 +62,7 @@ export function ProductLeadCard({ product, settings }: { product: Product; setti
   return (
     <div className="rounded-[22px] border border-[#dce8dc] bg-white p-4 shadow-[0_28px_80px_rgba(12,18,13,0.12)]">
       <div className="rounded-[18px] bg-[#f7f8fa] p-5">
-        <div className="aspect-[16/9]">
+        <div className="relative aspect-[16/9]">
           <ProductImage product={product} priority />
         </div>
       </div>
