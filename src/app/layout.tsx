@@ -131,14 +131,6 @@ export default async function RootLayout({
         },
         areaServed: "Shahdol",
       },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Electric scooter test ride and enquiry in Shahdol",
-        },
-        areaServed: LOCAL_SERVICE_AREAS,
-      },
     ],
   };
   const websiteJsonLd = {

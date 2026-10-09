@@ -76,16 +76,23 @@ export default async function VehicleDetailPage({
   // Extract a numeric price only when product.priceLabel contains
   // a clearly formatted INR price or a plain numeric amount.
 
+  
   const priceMatch =
-    product.priceLabel?.match(/^(?:₹|INR)\s*([\d,]+(?:\.\d{1,2})?)$/i) ??
-    product.priceLabel?.match(/^\s*([\d,]+(?:\.\d{1,2})?)\s*$/);
+    product.priceLabel?.match(
+      /^(?:₹|INR)\s*([\d,]+(?:\.\d{1,2})?)$/i
+    ) ??
+    product.priceLabel?.match(
+      /^\s*([\d,]+(?:\.\d{1,2})?)\s*$/
+    );
 
   const numericPrice = priceMatch
     ? Number(priceMatch[1].replace(/,/g, ""))
     : null;
 
   const productJsonLd =
-    numericPrice !== null && Number.isFinite(numericPrice) && numericPrice > 0
+    numericPrice !== null &&
+    Number.isFinite(numericPrice) &&
+    numericPrice > 0
       ? {
           "@context": "https://schema.org",
           "@type": "Product",
@@ -98,7 +105,9 @@ export default async function VehicleDetailPage({
           },
           image: product.heroImageUrl
             ? [officialAssetSrc(product.heroImageUrl)]
-            : [`${SITE_URL}/showroom/kinetic-green-shahdol-showroom-01.jpeg`],
+            : [
+                `${SITE_URL}/showroom/kinetic-green-shahdol-showroom-01.jpeg`,
+              ],
           url: `${SITE_URL}/vehicles/${product.slug}`,
           offers: {
             "@type": "Offer",
@@ -108,6 +117,7 @@ export default async function VehicleDetailPage({
           },
         }
       : null;
+
 
   return (
     <div>
